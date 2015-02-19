@@ -33,7 +33,7 @@ class Webhook
     @params = Qs.parse env.HUBOT_WEBHOOK_PARAMS
 
   buildBody: (message, params) ->
-    params[k] = v for k, v in @params
+    params[k] = v for k, v of @params
     params['user_id'] = message.user.id
     params['user_name'] = message.user.name
     params['room_id'] = message.user.room
