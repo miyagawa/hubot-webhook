@@ -36,24 +36,23 @@ class Webhook
     @params = Qs.parse env.HUBOT_WEBHOOK_PARAMS
     @method = env.HUBOT_WEBHOOK_METHOD || 'POST'
 
-  buildBody: (message, params) ->
+  prepareParams: (message, params) ->
     params[k] = v for k, v of @params
     params['user_id'] = message.user.id
     params['user_name'] = message.user.name
     params['room_id'] = message.user.room
     params['room_name'] = message.user.room
-    params
 
 class Command
   constructor: (@msg, @robot) ->
 
   reply: (webhook, params) ->
-    query = webhook.buildBody(@msg.message, params)
+    webhook.prepareParams(@msg.message, params)
     switch webhook.method
       when "GET"
-        @msg.http(webhook.url).query(query).get() @callback
+        @msg.http(webhook.url).query(params).get() @callback
       else
-        @msg.http(webhook.url).post(Qs.stringify query) @callback
+        @msg.http(webhook.url).post(Qs.stringify params) @callback
 
   callback: (err, _, body) =>
     if err?
