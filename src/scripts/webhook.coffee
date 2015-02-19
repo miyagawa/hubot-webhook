@@ -16,6 +16,7 @@
 #   Tatsuhiko Miyagawa <miyagawa@bulknews.net>
 #
 Qs = require 'qs'
+crypto = require 'crypto'
 module.exports = (robot) ->
   unless process.env.HUBOT_WEBHOOK_URL
     robot.logger.warning "webhook plugin is disabled since HUBOT_WEBHOOK_URL is not set."
@@ -35,6 +36,7 @@ class Webhook
     @url = env.HUBOT_WEBHOOK_URL
     @params = Qs.parse env.HUBOT_WEBHOOK_PARAMS
     @method = env.HUBOT_WEBHOOK_METHOD || 'POST'
+    @secret = env.HUBOT_WEBHOOK_HMAC_SECRET
 
   prepareParams: (message, params) ->
     params[k] = v for k, v of @params
@@ -43,16 +45,26 @@ class Webhook
     params['room_id'] = message.user.room
     params['room_name'] = message.user.room
 
+  makeHttp: (msg, params) ->
+    http = msg.http(@url)
+    if @secret
+      http = http.header 'X-Webhook-Signature', @signatureFor(params)
+    switch @method
+      when 'GET'
+        http.query(params).get()
+      else
+        http.post(Qs.stringify params)
+
+  signatureFor: (params) ->
+    sig = crypto.createHmac('sha1', @secret).update(Qs.stringify params).digest('hex')
+    "sha1=#{sig}"
+
 class Command
   constructor: (@msg, @robot) ->
 
   reply: (webhook, params) ->
     webhook.prepareParams(@msg.message, params)
-    switch webhook.method
-      when "GET"
-        @msg.http(webhook.url).query(params).get() @callback
-      else
-        @msg.http(webhook.url).post(Qs.stringify params) @callback
+    webhook.makeHttp(@msg, params) @callback
 
   callback: (err, _, body) =>
     if err?
