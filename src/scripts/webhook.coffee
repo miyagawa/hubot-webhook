@@ -48,7 +48,7 @@ class Webhook
   makeHttp: (msg, params) ->
     http = msg.http(@url)
     if @secret
-      http = http.header 'X-Webhook-Signature', @signatureFor(params)
+      http.header 'X-Webhook-Signature', @signatureFor(params)
     switch @method
       when 'GET'
         http.query(params).get()
