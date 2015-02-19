@@ -65,6 +65,10 @@ Hubot's aliasing feature would be useful if you want it act like a slash command
 To verify that the request comes from this bot, you can set an extra parameter(s) in `HUBOT_WEBHOOK_PARAMS` that will be sent to the webhook URL along with the message.
 
     > export HUBOT_WEBHOOK_PARAMS="token=1234567890"
+
+### HUBOT_WEBHOOK_METHOD
+
+You can set `HUBOT_WEBHOOK_METHOD` to `GET` to send the webhook as a GET rather than a POST request.
     
 ## Author
 
