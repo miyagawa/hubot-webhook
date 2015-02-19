@@ -17,6 +17,9 @@
 #
 Qs = require 'qs'
 module.exports = (robot) ->
+  unless process.env.HUBOT_WEBHOOK_URL
+    robot.logger.warning "webhook plugin is disabled since HUBOT_WEBHOOK_URL is not set."
+    return
   webhook = new Webhook process.env
   if process.env.HUBOT_WEBHOOK_COMMANDS
     cmds = process.env.HUBOT_WEBHOOK_COMMANDS.split(',').join("|")
