@@ -1,0 +1,31 @@
+{
+  "name": "hubot-webhook",
+  "version": "0.1.0",
+  "description": "Generic Webhook plugin for Hubot",
+  "main": "index.js",
+  "scripts": {
+    "hubot": "hubot -a shell"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/miyagawa/hubot-webhook.git"
+  },
+  "keywords": [
+    "hubot",
+    "hubot-scripts"
+  ],
+  "author": "Tatsuhiko Miyagawa <miyagawa@bulknews.net>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/miyagawa/hubot-webhook/issues"
+  },
+  "homepage": "https://github.com/miyagawa/hubot-webhook",
+  "devDependencies": {
+    "coffee-script": "^1.9.1",
+    "hubot": "^2.11.1",
+    "mocha": "^2.1.0"
+  },
+  "dependencies": {
+    "qs": "^2.3.3"
+  }
+}
