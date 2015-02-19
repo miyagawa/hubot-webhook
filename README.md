@@ -10,7 +10,7 @@ The remote webhook has a compatibility with [Slack's Custom Slash Commands](http
 
 ```
 room_id=1&
-room_name=chattroom&
+room_name=chatroom&
 user_id=123&
 user_name=miyagawa&
 text=hello+world
