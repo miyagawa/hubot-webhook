@@ -1,3 +1,6 @@
+### 0.1.3
+- Add HUBOT_WEBHOOK_HMAC_SECRET to sign the payload using HMAC+SHA1 hexdigest
+
 ### 0.1.2
 - Disable the plugin when HUBOT_WEBHOOK_URL is not set
 - Add HUBOT_WEBHOOK_METHOD so that you can send a request in GET rather than POST
