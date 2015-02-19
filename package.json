@@ -1,6 +1,6 @@
 {
   "name": "hubot-webhook",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Generic Webhook plugin for Hubot",
   "main": "index.js",
   "scripts": {

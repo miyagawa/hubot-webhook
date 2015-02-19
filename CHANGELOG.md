@@ -1,3 +1,7 @@
+### 0.1.2
+- Disable the plugin when HUBOT_WEBHOOK_URL is not set
+- Add HUBOT_WEBHOOK_METHOD so that you can send a request in GET rather than POST
+
 ### 0.1.1
 - Fixed HUBOT_WEBHOOK_PARAMS
 
