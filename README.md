@@ -62,13 +62,13 @@ Hubot's aliasing feature would be useful if you want it act like a slash command
 
 ### HUBOT_WEBHOOK_PARAMS
 
-To verify that the request comes from this bot, or to identify the incoming HTTP requests from other bot instances, you can set a static, extra list of parameter(s) in `HUBOT_WEBHOOK_PARAMS` that will be sent to the webhook URL along with the message.
+To identify the incoming HTTP requests from other bot instances, you can set a static, extra list of parameter(s) in `HUBOT_WEBHOOK_PARAMS` that will be sent to the webhook URL along with the message.
 
     > export HUBOT_WEBHOOK_PARAMS="token=1234567890"
 
 ### HUBOT_WEBHOOK_HMAC_SECRET
 
-To verify that the request comes from this bot even more securely, you can set an HMAC secret key that should be shared between Hubot and the receiver.
+To verify that the request comes from this bot, you can set an HMAC secret key that should be shared between Hubot and the receiver.
 
     > export HUBOT_WEBHOOK_HMAC_SECRET=a068a22dbe1b0a577d3800a3233f5a23693ae920
 
