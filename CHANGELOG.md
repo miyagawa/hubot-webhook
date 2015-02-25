@@ -1,3 +1,6 @@
+### 0.1.4
+- include reply_to= parameter for hipchat since hipchat adapter cuts off JID for user ID and rooms
+
 ### 0.1.3
 - Add HUBOT_WEBHOOK_HMAC_SECRET to sign the payload using HMAC+SHA1 hexdigest
 
