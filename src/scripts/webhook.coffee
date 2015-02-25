@@ -44,6 +44,7 @@ class Webhook
     params['user_name'] = message.user.name
     params['room_id'] = message.user.room
     params['room_name'] = message.user.room
+    params['reply_to'] = message.reply_to
 
   makeHttp: (msg, params) ->
     http = msg.http(@url)
