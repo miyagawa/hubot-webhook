@@ -1,3 +1,6 @@
+### 0.1.5
+- Fix for reply_to
+
 ### 0.1.4
 - include reply_to= parameter for hipchat since hipchat adapter cuts off JID for user ID and rooms
 
