@@ -54,6 +54,7 @@ class Webhook
       when 'GET'
         http.query(params).get()
       else
+        http.header 'Content-Type', 'application/x-www-form-urlencoded'
         http.post(Qs.stringify params)
 
   signatureFor: (params) ->
